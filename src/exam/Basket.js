@@ -25,7 +25,7 @@ const Basket = () => {
                 <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
                 <Card.Title title="Monitor" subtitle={'Rp.10.000.000'}  left={LeftContent}/>
                 <Card.Actions>
-                    <Button title="Kurang" onPress={() => setKonter(removeItem)}>Kurang </Button>
+                    <Button title="Kurang" onPress={removeItem}>Kurang </Button>
                     <View><Text style={[styles.bold, styles.title]}>{konter}</Text></View>
                     <Button title="Tambah" onPress={() => setKonter(konter+1)} >Tambah</Button>
                 </Card.Actions>

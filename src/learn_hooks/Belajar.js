@@ -16,6 +16,9 @@ const Belajar = ({ navigation }) => {
       <TouchableOpacity onPress={() => navigation.navigate('BelajarBasket', {qty: konter})} style={[styles.button, styles.marginBottom]}>
         <Text style={styles.title}>Basket</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('BelajarFancyAlerts')} style={[styles.button, styles.marginBottom]}>
+        <Text style={styles.title}>Fancy Alerts</Text>
+      </TouchableOpacity>
     </View>
   )
 }

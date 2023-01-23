@@ -1,60 +1,33 @@
-import { View, Text, TouchableOpacity } from 'react-native';
-
-import Ionicons from '@expo/vector-icons/Ionicons';
+import React from "react";
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-// import Home from './src/Home';
-// import About from './src/About';
-// import Contact from './src/Contact';
-import Product from './src/exam/Product';
-import Basket from './src/exam/Basket';
-import AppContext, { AppProvider } from "./src/exam/AppContext";
+import Belajar from './src/learn_hooks/Belajar';
+import BelajarUseState from './src/learn_hooks/BelajarUseState';
+import BelajarUseContext from './src/learn_hooks/BelajarUseContext';
+import BelajarBasket from './src/learn_hooks/BelajarBasket';
+import BelajarFancyAlerts from './src/learn_hooks/BelajarFancyAlerts';
+
+import AppContext, { AppProvider } from "./src/learn_hooks/AppContext";
+import { View, Text } from "react-native";
 
 const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
 
-export default function App() {
+const App = () => {
   return (
     <AppProvider>
       <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
-
-              if (route.name === 'Product') {
-                iconName = focused
-                  ? 'home'
-                  : 'home-outline';
-              } else if (route.name === 'Basket') {
-                iconName = focused ? 'basket' : 'basket-outline';
-              } else if (route.name === 'Contact') {
-                iconName = focused ? 'call' : 'call-outline';
-              }
-
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
-            tabBarActiveTintColor: 'tomato',
-            tabBarInactiveTintColor: 'gray',
-            tabBarStyle: {
-              position: 'absolute',
-              left: 20,
-              right: 20,
-              bottom: 20,
-              borderRadius: 12,
-              backgroundColor: '#121212',
-              height: 65,
-            },
-            tabBarShowLabel: false
-          })}
-        >
-          <Tab.Screen name="Product" component={Product} />
-          <Tab.Screen name="Basket" component={Basket} />
-        </Tab.Navigator>
+        <Stack.Navigator>
+          <Stack.Screen name="Belajar" component={Belajar} options={{ title: "Basic Hooks" }}/>
+          <Stack.Screen name="BelajarUseState" component={BelajarUseState} options={{ title: "useState" }}/>
+          <Stack.Screen name="BelajarUseContext" component={BelajarUseContext} options={{ title: "useContext" }}/>
+          <Stack.Screen name="BelajarBasket" component={BelajarBasket} options={({ route }) => ({ title: `Total Quantity : ${route.params.qty}`})} />
+          <Stack.Screen name="BelajarFancyAlerts" component={BelajarFancyAlerts} options={{ title: "FancyAlerts" }}/>
+        </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>
-  );
+  )
 }
+
+export default App;
